@@ -1,0 +1,17 @@
+---
+- name: Playbook to install and start the httpd server
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd package
+      yum:
+        name: httpd
+        state: present
+      notify: Start apache
+
+  handlers:
+    - name: Start apache
+      service:
+        name: "{{ 'httpd' if ansible_service_mgr == 'systemd' else 'apache2' }}"
+        state: started
+

@@ -1,0 +1,11 @@
+---
+- name: Copy the files from the host to target servers
+  hosts: all
+  become: true
+  tasks:
+  - name: navigate and copy the file from one location to the other
+    copy:
+        src: /etc/modules/abc/abcd.txt
+        dest: /etc/
+        mode: 600
+        owner: root

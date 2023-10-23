@@ -1,0 +1,9 @@
+---
+- name: Playbook | to delete | files in the slave servers
+  hosts: all
+  become: true
+  tasks:
+  - name: Delete /etc/abcd.txt
+    file:
+        path: /etc/abcd.txt
+        state: absent

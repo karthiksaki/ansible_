@@ -1,0 +1,19 @@
+---
+- name: Playbook | to delete | files and directory
+  hosts: all
+  become: true
+  tasks:
+    - name: Delete the files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /home/ansible/karthik/abc.txt
+        - /home/ansible/karthik/abcd.txt
+        - /home/ansible/karthik/abce.txt
+
+    - name: Delete the directory
+      file:
+        path: /home/ansible/karthik
+        state: absent
+

@@ -1,0 +1,12 @@
+---
+- name: Playbook | to install httpd server | on the slave Host
+  hosts: all
+  become: true
+  tasks:
+    - name: Run a command and capture stdout
+      shell: hostname
+      register: command_result
+
+    - debug:
+        var: command_result.stdout
+

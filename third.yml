@@ -1,0 +1,20 @@
+---
+- name: Playbook | to create | file
+  hosts: all
+    #become: true
+  tasks:
+    - name: creating a directory
+      file:
+        path: /home/ansible/karthik
+        state: directory
+        mode: '0755'
+
+    - name: creating files inside the directory
+      file:
+        path: "{{ item }}"
+        state: touch
+      with_items:
+        - /home/ansible/karthik/abc.txt
+        - /home/ansible/karthik/abcd.txt
+        - /home/ansible/karthik/abce.txt
+

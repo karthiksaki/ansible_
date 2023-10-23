@@ -1,0 +1,14 @@
+---
+- name: user creation across all the servers
+  hosts: all
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: create a user called karthik
+      user:
+        name: karthik
+        state: absent
+    - name: Ping hosts
+      ping:
+
+ 

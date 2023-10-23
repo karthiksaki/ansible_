@@ -1,0 +1,17 @@
+---
+- name: Playbook to install and start the httpd server
+  hosts: all
+  become: true
+  tasks:
+    - name: creating users on the servers
+      user:
+        name: '{{item}}'
+        state: absent
+      with_items:
+        - snk
+        - naveena
+        - moukthi
+        - america
+        - dallas
+        - seattle
+        - Tesco

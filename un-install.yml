@@ -1,0 +1,10 @@
+---
+- name: Playbook | to uninstall httpd server | on the slave Host
+  hosts: all  # Replace with the appropriate host or group of hosts
+  become: true
+  tasks:
+    - name: Uninstall HTTPD Package
+      yum:
+        name: httpd
+        state: absent
+

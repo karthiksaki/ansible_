@@ -1,0 +1,9 @@
+---
+- name: Playbook | to create | file
+  hosts: all
+  become: true
+  tasks:
+  - name: creating a directory
+    file:
+        path: /home/ansible/karthik
+        state: absent

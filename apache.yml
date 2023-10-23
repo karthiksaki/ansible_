@@ -1,0 +1,29 @@
+---
+- name: Playbook to install and start the httpd server
+  hosts: webserver
+  become: true
+  tasks:
+    - name: Install httpd package
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start the httpd service
+      service:
+        name: httpd
+        state: started
+
+    - name: Make an HTTP request to the localhost
+      uri:
+        url: "http://localhost"
+        return_content: no
+      register: response
+
+    - debug:
+        var: response.status
+    - name: Use wget to fetch content from localhost:80
+      command: wget -q -O - http://localhost:80
+      register: wget_output
+
+    - debug:
+        var: wget_output.stdout_lines
